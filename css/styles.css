@@ -73,12 +73,12 @@ a:hover { color: var(--blue-dark); }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: 72px;
+  min-height: 104px;
 }
 
 .brand { display: block; line-height: 0; }
 
-.brand img { height: 54px; width: auto; }
+.brand img { height: 72px; width: auto; }
 
 .site-nav {
   display: flex;
@@ -89,18 +89,16 @@ a:hover { color: var(--blue-dark); }
 
 .site-nav a {
   font-family: var(--font-head);
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--ink);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--navy);
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 8px;
 }
 
-.site-nav a:hover { background: var(--soft); color: var(--navy); }
-.site-nav a[aria-current="page"] { color: var(--blue); }
-
-.site-nav .btn { color: #fff; }
+.site-nav a:hover { background: var(--soft); }
+.site-nav a[aria-current="page"] { color: var(--blue-bright); }
 
 /* ---------- Buttons ---------- */
 
@@ -124,65 +122,105 @@ a:hover { color: var(--blue-dark); }
 .btn-light { background: #fff; color: var(--navy); }
 .btn-light:hover { background: var(--soft); color: var(--navy-dark); }
 
+.btn-pink { background: var(--pink); }
+.btn-pink:hover { background: var(--pink-deep); }
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--pink);
+  padding: 10px 26px;
+}
+.btn-outline:hover { background: rgba(242, 129, 217, 0.15); }
+
 /* ---------- Hero ---------- */
 
 .hero {
-  background: linear-gradient(155deg, var(--navy-dark) 0%, var(--navy) 55%, var(--blue) 100%);
+  background: var(--navy);
   color: #fff;
-  padding: 72px 0 80px;
+  padding: 88px 0 96px;
 }
 
 .hero .container {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
   align-items: center;
 }
 
-.hero h1 { color: #fff; margin-bottom: 0.5em; }
+.hero h1 {
+  color: #fff;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 700;
+  margin-bottom: 0.4em;
+}
 
 .hero .lede {
   font-size: 1.2rem;
-  color: #dce8ff;
-  margin-bottom: 1.8em;
+  color: #fff;
+  margin-bottom: 2em;
+  max-width: 34em;
 }
 
-.hero img {
-  border-radius: var(--radius);
-  box-shadow: 0 24px 48px rgba(10, 16, 45, 0.45);
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
-/* ---------- Stats ---------- */
+/* ---------- Stat speech bubbles ---------- */
 
-.stats {
-  background: var(--soft);
-  padding: 56px 0;
-}
-
-.stats .container {
+.bubble-cluster {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.05fr 0.95fr;
   gap: 24px;
+  align-items: start;
 }
 
-.stat-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-  text-align: center;
-}
-
-.stat-card .figure {
+.bubble {
   font-family: var(--font-head);
-  font-weight: 800;
-  font-size: 2.2rem;
-  color: var(--blue-bright);
-  display: block;
-  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  text-align: center;
+  padding: 28px 30px;
+  border-radius: 32px;
+  margin: 0;
 }
 
-.stat-card p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+.bubble-blue {
+  grid-column: 1;
+  background: var(--blue);
+  color: #fff;
+  border-bottom-left-radius: 0;
+}
+.bubble-blue strong { color: var(--pink); font-weight: 700; }
+
+.bubble-pink {
+  grid-column: 2;
+  margin-top: 72px;
+  background: var(--pink);
+  color: #fff;
+  border-bottom-right-radius: 0;
+}
+.bubble-pink strong { color: var(--navy); font-weight: 700; }
+
+.bubble-white {
+  grid-column: 1;
+  width: 92%;
+  margin: -28px 0 0 14%;
+  background: #fff;
+  color: var(--navy);
+  border-bottom-left-radius: 0;
+}
+.bubble-white strong { color: var(--pink-deep); font-weight: 700; }
+
+.lead {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--navy);
+  line-height: 1.55;
+}
 
 /* ---------- Sections ---------- */
 
@@ -383,13 +421,19 @@ address { font-style: normal; }
   .hero .container,
   .split,
   .graph-grid,
-  .article-cards {
+  .article-cards,
+  .bubble-cluster {
     grid-template-columns: 1fr;
   }
 
   .hero { padding: 56px 0; }
 
-  .stats .container { grid-template-columns: 1fr; }
+  .bubble-blue, .bubble-pink, .bubble-white { grid-column: 1; }
+  .bubble-pink { margin-top: 0; }
+  .bubble-white { width: auto; margin: 0; }
+
+  .brand img { height: 56px; }
+  .site-header .container { min-height: 80px; }
 
   .split.flip img { order: -1; }
 }
