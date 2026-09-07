@@ -187,9 +187,7 @@ a:hover { color: var(--blue-dark); }
   margin: 0;
   aspect-ratio: 159 / 145;
   background: no-repeat center / contain;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  align-content: center;
   text-align: center;
   padding: 4% 9% 23%;
   font-family: var(--font-head);
