@@ -187,7 +187,7 @@ a:hover { color: var(--blue-dark); }
   margin: 0;
   aspect-ratio: 159 / 145;
   background: no-repeat center / contain;
-  align-content: center;
+  align-content: start;
   text-align: center;
   font-family: var(--font-head);
   font-weight: 600;
