@@ -352,19 +352,35 @@ a.read-more:hover { color: var(--blue); }
 
 /* ---------- CTA band ---------- */
 
-.cta-band {
-  background: linear-gradient(140deg, var(--blue) 0%, var(--blue-bright) 100%);
-  color: #fff;
-  padding: 72px 0;
-  text-align: center;
+.cta-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  border-radius: 28px;
+  padding: 56px 60px;
 }
 
-.cta-band h2 { color: #fff; }
+.cta-card h2 { color: var(--pink); }
 
-.cta-band p {
-  max-width: 640px;
-  margin: 0 auto 1.8em;
-  color: #dce8ff;
+.cta-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 32em;
+  margin-bottom: 2em;
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.cta-card .btn { position: relative; z-index: 1; }
+
+.cta-card::after {
+  content: "";
+  position: absolute;
+  right: 2.5%;
+  bottom: -4%;
+  width: 24%;
+  aspect-ratio: 159 / 145;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="20.5 27.5 159 145"><path fill="%232344c5" d="M20.5 89.133c0-36.546 18.16-61.524 50.586-61.633h52.748c31.454 0 55.666 19.247 55.666 61.849V172.5s-18.16-28.114-56.639-25.951H71.194c-32.534 0-50.694-24.978-50.694-57.416z"/></svg>') no-repeat center / contain;
 }
 
 /* ---------- Article pages ---------- */
