@@ -1,0 +1,12 @@
+{
+  "name": "more-money-for-schools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site for moremoneyforschools.co.uk, served by a minimal Node server on Azure App Service",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

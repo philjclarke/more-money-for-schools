@@ -12,8 +12,9 @@ Rebuild of https://www.moremoneyforschools.co.uk/ as a plain static site (no bui
 - `404.html` — not-found page (served automatically by Vercel)
 - `css/styles.css` — shared stylesheet
 - `images/` — site images and logos (AVIF + JPEG)
-- `vercel.json` — trailing-slash and header config for Vercel (current host, used for stakeholder sharing)
-- `staticwebapp.config.json` — equivalent config for Azure Static Web Apps (the planned eventual production host); ignored by Vercel
+- `server.js` + `package.json` — zero-dependency Node server for Azure App Service (production host, Node 22); `npm start` runs it, serving the static files with extensionless routes and the 404 page
+- `vercel.json` — trailing-slash and header config for Vercel (used for stakeholder sharing; Vercel ignores server.js for a static deploy)
+- `staticwebapp.config.json` — config kept in case of a move to Azure Static Web Apps; ignored by App Service and Vercel
 - `sitemap.xml`, `robots.txt`, `favicon.svg`
 
 All five original Wix URL paths are preserved (`trailingSlash: false` keeps them extension- and slash-free, exactly as on Wix), so no redirects are needed.
@@ -27,6 +28,16 @@ python3 -m http.server 8000
 ```
 
 Then open http://localhost:8000
+
+## Deploying to Azure App Service (production)
+
+The live app is `moremoneyforschools-live` (North Europe), running Node 22 on Linux.
+
+1. In the Azure Portal, open the Web App → **Deployment Center** → connect this GitHub repo/branch. Azure's build (Oryx) detects `package.json` and starts the app with `npm start` — no startup command needed.
+2. Each push to `main` then deploys automatically via the generated GitHub Actions workflow.
+3. When ready to go live: **Custom domains** → add `www.moremoneyforschools.co.uk` (and apex), repoint DNS from Wix, and let App Service issue the managed certificate.
+
+To test the server locally: `npm start` then open http://localhost:8080.
 
 ## Deploying to Vercel
 
